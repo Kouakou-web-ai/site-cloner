@@ -16,33 +16,69 @@ Le skill rappelle aussi de vérifier la légitimité du clonage (site concurrent
 
 ## Installation
 
-### Claude Code
+### ⚡ Installation ultra-rapide (Recommandée)
 
-**Option A — clone direct dans tes skills personnels (disponible dans tous tes projets) :**
+Télécharge et installe le skill en **une seule commande** avec le visuel animé officiel conçu par **KAYIM — TRUIX DEV** :
 
+**macOS / Linux / WSL / Git Bash :**
 ```bash
-git clone https://github.com/<kouakou-web_ai>/site-cloner.git /tmp/site-cloner
+curl -fsSL https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.sh | bash
+```
+
+*Pour installer uniquement dans le projet en cours (`.claude/skills/`) :*
+```bash
+curl -fsSL https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.sh | bash -s -- --local
+```
+
+**Windows (PowerShell) :**
+```powershell
+irm https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.ps1 | iex
+```
+
+```text
+  _  __     _ __     _____ __  __ 
+ | |/ /    / \ \   / /_ _|  \/  |
+ | ' /    / _ \ \ / / | || |\/| |
+ | . \   / ___ \ Y /  | || |  | |
+ |_|\_\ /_/   \_\_/  |___|_|  |_|
+  ===========================================
+     ⚡ TRUIX DEV — SITE CLONER INSTALLER ⚡
+  ===========================================
+
+  ✔ Détection de l'environnement Claude Code...  [OK]
+  ✔ Téléchargement du skill site-cloner...        [████████████████████] 100%
+  ✔ Installation dans ~/.claude/skills/site-cloner
+
+  ┌────────────────────────────────────────────────────────┐
+  │  🎉 Installation réussie avec succès !                 │
+  │                                                        │
+  │  Auteur  : KAYIM (TRUIX DEV)                           │
+  │  Skill   : site-cloner v1.0.0                          │
+  │  Usage   : Tapez /skills dans Claude Code pour tester  │
+  └────────────────────────────────────────────────────────┘
+```
+
+Une fois installé, vérifie avec `/skills` dans Claude Code — `site-cloner` apparaîtra dans la liste.
+
+### Installation manuelle
+
+Si tu préfères cloner manuellement :
+
+**Option A — dans tes skills personnels (tous tes projets) :**
+```bash
+git clone https://github.com/Kouakou-web-ai/site-cloner.git /tmp/site-cloner
 mkdir -p ~/.claude/skills
 cp -r /tmp/site-cloner/site-cloner ~/.claude/skills/
 rm -rf /tmp/site-cloner
 ```
 
-**Option B — dans un seul projet (committable avec ton repo, partagé avec ton équipe) :**
-
+**Option B — dans un seul projet :**
 ```bash
-git clone https://github.com/<kouakou-web_ai>/site-cloner.git /tmp/site-cloner
+git clone https://github.com/Kouakou-web-ai/site-cloner.git /tmp/site-cloner
 mkdir -p .claude/skills
 cp -r /tmp/site-cloner/site-cloner .claude/skills/
 rm -rf /tmp/site-cloner
 ```
-
-**Option C — via [skill-installer](https://pypi.org/project/skill-installer/), si tu l'as :**
-
-```bash
-ski https://github.com/<ton-username>/site-cloner/blob/main/site-cloner/SKILL.md
-```
-
-Une fois installé, vérifie avec `/skills` dans Claude Code — `site-cloner` doit apparaître dans la liste.
 
 ### Claude.ai (skill personnalisé)
 

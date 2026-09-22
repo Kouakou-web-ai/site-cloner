@@ -72,21 +72,8 @@ progress_bar() {
   printf "\r  ${GREEN}✔${RESET} %s... [${VIOLET_LIGHT}%s${RESET}] 100%%\n" "$msg" "$filled"
 }
 
-# --- Cible d'installation ---
-IS_LOCAL=false
-for arg in "$@"; do
-  if [ "$arg" == "--local" ] || [ "$arg" == "-l" ]; then
-    IS_LOCAL=true
-  fi
-done
-
-if [ "$IS_LOCAL" = true ]; then
-  TARGET_DIR="./.claude/skills/site-cloner"
-  TARGET_DISPLAY="./.claude/skills/site-cloner (projet local)"
-else
-  TARGET_DIR="$HOME/.claude/skills/site-cloner"
-  TARGET_DISPLAY="~/.claude/skills/site-cloner (global)"
-fi
+LOCAL_DIR="./.claude/skills/site-cloner"
+GLOBAL_DIR="$HOME/.claude/skills/site-cloner"
 
 # --- Étape 1 : Détection environnement ---
 spinner "Détection de l'environnement Claude Code..."
@@ -117,12 +104,19 @@ else
   fi
 fi
 
-# --- Étape 3 : Déploiement dans le répertoire cible ---
-mkdir -p "$(dirname "$TARGET_DIR")"
-rm -rf "$TARGET_DIR"
-cp -r "$TMP_DIR/site-cloner" "$TARGET_DIR"
+# --- Étape 3 : Déploiement (Projet actuel + Global) ---
+# 1. Dans le projet actuel
+mkdir -p "$(dirname "$LOCAL_DIR")"
+rm -rf "$LOCAL_DIR"
+cp -r "$TMP_DIR/site-cloner" "$LOCAL_DIR"
 
-echo -e "  ${GREEN}✔${RESET} Installation dans ${CYAN}${TARGET_DISPLAY}${RESET}"
+# 2. Au niveau global
+mkdir -p "$(dirname "$GLOBAL_DIR")"
+rm -rf "$GLOBAL_DIR"
+cp -r "$TMP_DIR/site-cloner" "$GLOBAL_DIR"
+
+echo -e "  ${GREEN}✔${RESET} Installé dans le projet actuel : ${CYAN}./.claude/skills/site-cloner${RESET}"
+echo -e "  ${GREEN}✔${RESET} Installé au niveau global      : ${CYAN}~/.claude/skills/site-cloner${RESET}"
 echo ""
 
 # --- Encadré final de succès ---

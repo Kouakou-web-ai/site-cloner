@@ -18,22 +18,23 @@ Le skill rappelle aussi de vérifier la légitimité du clonage (site concurrent
 
 ### ⚡ Installation ultra-rapide (Recommandée)
 
-Télécharge et installe le skill en **une seule commande** avec le visuel animé officiel conçu par **KAYIM — TRUIX DEV** :
+Ouvre ton terminal dans le dossier de ton projet, copie **une seule ligne de commande** ci-dessous et appuie sur **Entrée** :
 
-**macOS / Linux / WSL / Git Bash :**
+#### 👉 Sur Windows (PowerShell) :
+```powershell
+irm https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.ps1 | iex
+```
+
+#### 👉 Sur macOS / Linux / WSL / Git Bash :
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.sh | bash
 ```
 
-*Pour installer uniquement dans le projet en cours (`.claude/skills/`) :*
-```bash
-curl -fsSL https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.sh | bash -s -- --local
-```
+> **Note :** La commande installe automatiquement le skill à la fois dans ton projet actuel (`./.claude/skills/site-cloner`) et dans tes skills globaux (`~/.claude/skills/site-cloner`).
 
-**Windows (PowerShell) :**
-```powershell
-irm https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.ps1 | iex
-```
+---
+
+#### 🎬 Résultat animé qui s'affiche dans ton terminal :
 
 ```text
   _  __     _ __     _____ __  __ 
@@ -47,7 +48,8 @@ irm https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.ps
 
   ✔ Détection de l'environnement Claude Code...  [OK]
   ✔ Téléchargement du skill site-cloner...        [████████████████████] 100%
-  ✔ Installation dans ~/.claude/skills/site-cloner
+  ✔ Installé dans le projet actuel : ./.claude/skills/site-cloner
+  ✔ Installé au niveau global      : ~/.claude/skills/site-cloner
 
   ┌────────────────────────────────────────────────────────┐
   │  🎉 Installation réussie avec succès !                 │

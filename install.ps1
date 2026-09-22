@@ -53,39 +53,45 @@ for ($i = 1; $i -le $total; $i++) {
 }
 Write-Host ("`r  " + $GREEN + "[OK]" + $RESET + " " + $msg2 + "... [" + $VIOLET_LIGHT + ("=" * $total) + $RESET + "] 100%")
 
-# Repertoire cible
+# Repertoires cibles : dans le projet actuel ET au niveau global
+$localDir = Join-Path (Get-Location) ".claude\skills\site-cloner"
 $userProfile = [System.Environment]::GetFolderPath('UserProfile')
-$targetDir = Join-Path $userProfile ".claude\skills\site-cloner"
-$targetDisplay = "~/.claude/skills/site-cloner (global)"
+$globalDir = Join-Path $userProfile ".claude\skills\site-cloner"
 
-# Telechargement et installation
+# Telechargement et extraction
 $tempZip = Join-Path $env:TEMP "site-cloner-$([Guid]::NewGuid().ToString('N')).zip"
 $tempExtract = Join-Path $env:TEMP "site-cloner-$([Guid]::NewGuid().ToString('N'))"
 
 try {
+    $sourceDir = ""
     if (Test-Path ".\site-cloner\SKILL.md") {
-        # Si execute depuis le dossier du repo
-        New-Item -ItemType Directory -Force -Path (Split-Path $targetDir -Parent) | Out-Null
-        if (Test-Path $targetDir) { Remove-Item -Recurse -Force $targetDir }
-        Copy-Item -Recurse -Force ".\site-cloner" $targetDir
+        # Si execute depuis le dossier racine du repo
+        $sourceDir = (Resolve-Path ".\site-cloner").Path
     } else {
         # Telechargement depuis GitHub
         $zipUrl = "https://github.com/Kouakou-web-ai/site-cloner/archive/refs/heads/main.zip"
         Invoke-WebRequest -Uri $zipUrl -OutFile $tempZip -UseBasicParsing
         Expand-Archive -Path $tempZip -DestinationPath $tempExtract -Force
-        
-        New-Item -ItemType Directory -Force -Path (Split-Path $targetDir -Parent) | Out-Null
-        if (Test-Path $targetDir) { Remove-Item -Recurse -Force $targetDir }
-        
         $sourceDir = Join-Path $tempExtract "site-cloner-main\site-cloner"
-        Copy-Item -Recurse -Force $sourceDir $targetDir
     }
+
+    # 1. Copie dans le projet courant
+    New-Item -ItemType Directory -Force -Path (Split-Path $localDir -Parent) | Out-Null
+    if (Test-Path $localDir) { Remove-Item -Recurse -Force $localDir }
+    Copy-Item -Recurse -Force $sourceDir $localDir
+
+    # 2. Copie au niveau global
+    New-Item -ItemType Directory -Force -Path (Split-Path $globalDir -Parent) | Out-Null
+    if (Test-Path $globalDir) { Remove-Item -Recurse -Force $globalDir }
+    Copy-Item -Recurse -Force $sourceDir $globalDir
+
 } finally {
     if (Test-Path $tempZip) { Remove-Item -Force $tempZip -ErrorAction SilentlyContinue }
     if (Test-Path $tempExtract) { Remove-Item -Recurse -Force $tempExtract -ErrorAction SilentlyContinue }
 }
 
-Write-Host ("  " + $GREEN + "[OK]" + $RESET + " Installation dans " + $CYAN + $targetDisplay + $RESET)
+Write-Host ("  " + $GREEN + "[OK]" + $RESET + " Installe dans le projet actuel : " + $CYAN + "./.claude/skills/site-cloner" + $RESET)
+Write-Host ("  " + $GREEN + "[OK]" + $RESET + " Installe au niveau global      : " + $CYAN + "~/.claude/skills/site-cloner" + $RESET)
 Write-Host ""
 
 # Boite finale

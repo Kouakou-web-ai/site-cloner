@@ -4,7 +4,6 @@
   "description": "Agent Skill for Claude Code to clone web apps cleanly into Next.js & Tailwind. By KAYIM (TRUIX DEV).",
   "main": "bin/index.js",
   "bin": {
-    "@truix-dev/kayim-site-cloner": "./bin/index.js",
     "kayim-site-cloner": "./bin/index.js"
   },
   "files": [

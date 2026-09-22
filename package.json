@@ -1,0 +1,37 @@
+{
+  "name": "@truix-dev/kayim-site-cloner",
+  "version": "1.0.0",
+  "description": "Agent Skill for Claude Code to clone web apps cleanly into Next.js & Tailwind. By KAYIM (TRUIX DEV).",
+  "main": "bin/index.js",
+  "bin": {
+    "@truix-dev/kayim-site-cloner": "./bin/index.js",
+    "kayim-site-cloner": "./bin/index.js"
+  },
+  "files": [
+    "bin",
+    "site-cloner"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "site-cloner",
+    "kayim",
+    "truix-dev",
+    "ai-agent",
+    "nextjs",
+    "tailwind"
+  ],
+  "author": "KAYIM (TRUIX DEV)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kouakou-web-ai/site-cloner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kouakou-web-ai/site-cloner/issues"
+  },
+  "homepage": "https://github.com/Kouakou-web-ai/site-cloner#readme"
+}

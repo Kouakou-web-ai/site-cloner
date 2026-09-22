@@ -18,19 +18,26 @@ Le skill rappelle aussi de vérifier la légitimité du clonage (site concurrent
 
 ### ⚡ Installation ultra-rapide (Recommandée)
 
-Ouvre ton terminal dans le dossier de ton projet, copie **une seule ligne de commande** ci-dessous et appuie sur **Entrée** :
+Ouvre ton terminal dans le dossier de ton projet, choisis l'une des commandes ci-dessous et appuie sur **Entrée** :
 
-#### 👉 Sur Windows (PowerShell) :
+#### 🚀 Option 1 — Via NPX (Node.js) :
+```bash
+npx @truix-dev/kayim-site-cloner
+```
+
+#### 💻 Option 2 — Sans Node.js (Directement dans le terminal) :
+
+**Sur Windows (PowerShell) :**
 ```powershell
 irm https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.ps1 | iex
 ```
 
-#### 👉 Sur macOS / Linux / WSL / Git Bash :
+**Sur macOS / Linux / WSL / Git Bash :**
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Kouakou-web-ai/site-cloner/main/install.sh | bash
 ```
 
-> **Note :** La commande installe automatiquement le skill à la fois dans ton projet actuel (`./.claude/skills/site-cloner`) et dans tes skills globaux (`~/.claude/skills/site-cloner`).
+> **Note :** Ces commandes installent automatiquement le skill à la fois dans ton projet actuel (`./.claude/skills/site-cloner`) et dans tes skills globaux (`~/.claude/skills/site-cloner`).
 
 ---
 
